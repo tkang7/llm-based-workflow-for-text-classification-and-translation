@@ -1,0 +1,51 @@
+sentence id,sentence,class-label
+1,"I absolutely adore how this workout app counts steps, but it fails to sync half the time, so I'm stuck redoing workouts.",mixed
+2,"I can't believe how well these wireless earbuds fit, though I keep losing connection outdoors, which is so annoying.",mixed
+3,I wholeheartedly recommend this mental health platform; I've never felt more supported or validated.,positive
+4,"So the new streaming service has excellent content, but the buffering times make me want to tear my hair out.",mixed
+5,"I guess it's not totally horrible, but I'd be lying if I said it was worth the subscription price.",negative
+6,I'm thrilled with my new phone's camera quality; I can finally capture memories without them looking blurry.,positive
+7,"This telehealth site might be helpful if it didn't crash right before I'm about to see the doctor, which is beyond frustrating.",negative
+8,"I absolutely love the easy checkout process, pero the shipping fees are such a scam, can't stand it!",mixed
+9,"Wow, this game is amazing—except for the pay-to-win mechanics that ruin all the fun.",mixed
+10,"Your new interface is absolutely phenomenal, unless you're colorblind, in which case it's practically unreadable.",mixed
+11,"I can't deny the car's sleek design, but the engine noises make it sound like it's falling apart.",mixed
+12,"These contact lenses are truly revolutionary—my vision has never been sharper, and I didn't even need to see an optometrist in person.",positive
+13,"I hate to admit it, but this productivity app actually helped me meet my deadlines.",mixed
+14,"I'm so overjoyed with the hotel's hospitality, though the food was quite disappointing.",mixed
+15,I cannot recommend this smart vacuum enough—it mapped my entire house with zero effort on my part!,positive
+16,"This video editing software looked promising, yet it crashes more often than I can save a project.",negative
+17,"While the meal was okay, the rude server completely ruined my night out.",negative
+18,"The interactive lessons are quite fun, but the repeated paywalls make me question its educational value.",mixed
+19,"I genuinely appreciate how comfortable this wearable is, yet the step counter misses half my movements.",mixed
+20,"I wouldn't go so far as to say it's terrible, but it's definitely not something I'd ever buy again.",negative
+21,I can't believe how punctual these drivers are; I haven't once had a rude experience or a wrong address—loving it!,positive
+22,"I'm intrigued by this new recipe blog, although half the ingredients are so exotic I can't find them anywhere.",mixed
+23,"The watch's heart-rate monitor is remarkably accurate, but the battery drains in under four hours, which is absurd.",mixed
+24,"I sincerely love your approach to mental wellness, yet the waiting times for appointments are off-putting.",mixed
+25,"If it weren't so expensive, I'd say this hair serum is the best thing that's happened to me all year.",negative
+26,I can't stop raving about this new instant pot—it has saved me so much time in the kitchen!,positive
+27,"It's quite remarkable: the streaming quality is top-notch, but the show selection is laughably small.",mixed
+28,"The new VR headset immerses me completely, although it sometimes gives me motion sickness.",mixed
+29,I would absolutely love your tutoring site if the tutors didn't routinely cancel sessions last minute.,negative
+30,"This airline's seats were surprisingly comfy, but they lost my luggage and I had to wait days to get it back.",negative
+31,"Man, I'm kinda digging how sick this skateboard rides, pero sometimes the wheels just jam outta nowhere.",mixed
+32,"It's hella dope they added a VR feature, but honestly, it gave me a headache after five minutes.",mixed
+33,"Yo, this new album is straight fire, I'd recommend it to everyone in mi barrio!",positive
+34,"I can't stand this new e-reader, bro—it's glitchier than my old phone, and that's saying something.",negative
+35,"On the real, this subscription box is bomb, but it's kinda overpriced if you ask me.",mixed
+36,"OMG, I absolutely love these sneakers; they're comfy AF and look fly.",positive
+37,"Shucks, I'm over the moon about your meal kit service, yet the packaging is super wasteful.",mixed
+38,"You said it's 'muy bueno,' but it ain't even half as good as you hyped it up to be, tbh.",negative
+39,"This fancy herbal tea is so refreshing, plus it helped my tummy ache—no complaints here, homie!",positive
+40,"Bruh, the streaming quality on your sports channel is lit, though the commentary sometimes lags behind the visuals.",mixed
+41,"I'm kinda torn about this new note-taking app—it organizes everything nicely, but it's glitchy as heck.",mixed
+42,"Hol' up, this 'smart' fridge just beeped at me in French, and I have no clue what it wants!",negative
+43,"No manches, this air purifier legit made my allergies worse—like, what's the point?",negative
+44,"Check it, this online counseling platform's response time is super quick, and I'm feeling some real progress.",positive
+45,"I might be buggin', but these tutoring videos are both rad and confusing at the same time.",mixed
+46,"Dang, I wish the new drone was as stable as they claim, 'cause it's basically drifting all over my backyard.",negative
+47,"Chale, I dig the vibe of your mindfulness app, pero it crashes every single morning without fail.",mixed
+48,"Y'all won't believe how fresh these cosmetics smell, and the packaging is super cute! I'm in love.",positive
+49,"Fam, the audiobook selection is dope, but the interface is whack and keeps skipping chapters on me.",mixed
+50,"It's unbelievably awesome that your new coffee machine texts me when it's done brewing, except it uses up my data plan constantly, so I'm kinda over it.",mixed
