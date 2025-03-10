@@ -1,28 +1,26 @@
 import pandas as pd
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
 
-actual_data_path = "./data/input/"
+actual_data_path = "./src/data/input/"
 types_of_data = ["sentiment", "toxicity"]
 
 def evaluate(pred, name):
     actual=""
+    name = name.lower()
 
-    if name.lower() in types_of_data:
+    if name in types_of_data:
         if name == types_of_data[0]:
             sentiment_actual_data_path = actual_data_path + "eng_sentiment_test_solutions.csv"
             sentiment_test_actual = pd.read_csv(sentiment_actual_data_path)
-            actual=sentiment_test_actual["class-label"], 
-            pred=pred["sentiment_result"],
+            actual = sentiment_test_actual["class-label"].str.lower()
         else:
-            toxicity_actual_data_path = actual_data_path + "eng_sentiment_test_solutions.csv"
+            toxicity_actual_data_path = actual_data_path + "eng_toxicity_test-solutions.csv"
             toxicity_test_actual = pd.read_csv(toxicity_actual_data_path)
-            actual=toxicity_test_actual["class-label"], 
-            pred=pred["toxicity_result"],
+            actual = toxicity_test_actual["label"].str.lower()
     else:
         print(f"THIS TYPE OF EVALUATION IS NOT SUPPORTED: {name}")
 
-    actual = actual.str.lower()
-    pred = actual.str.lower()
+    pred = pred.str.lower()
 
     # Calculate metrics
     accuracy = accuracy_score(actual, pred)
@@ -36,13 +34,16 @@ def evaluate(pred, name):
     print(f"Recall: {recall:.4f}")
     print(f"F1 Score: {f1:.4f}\n")
 
-if __name__ == "__main__":
-    sentiment_actual_data_path = actual_data_path + "eng_setiment_test_solutions.csv"
-    toxicity_actual_data_path = actual_data_path + "eng_toxicity_test-solutions.csv"
-    sentiment_test_actual = pd.read_csv(sentiment_actual_data_path)
-    toxicity_test_actual = pd.read_csv(toxicity_actual_data_path)
+    # Export metrics to a text file
+    with open(f"./src/data/output/{name}_evaluation.txt", "w") as file:
+        file.write(f"Evaluating {name}\n")
+        file.write(f"Accuracy: {accuracy:.4f}\n")
+        file.write(f"Precision: {precision:.4f}\n")
+        file.write(f"Recall: {recall:.4f}\n")
+        file.write(f"F1 Score: {f1:.4f}\n")
 
-    pred_data_path = "./data/output/"
+if __name__ == "__main__":
+    pred_data_path = "./src/data/output/"
     sentiment_test_data_path = pred_data_path + "sentiment_test_predictions.csv"
     toxicity_test_data_path = pred_data_path + "toxicity_test_predictions.csv"
     sentiment_test_prediction = pd.read_csv(sentiment_test_data_path)
@@ -50,14 +51,12 @@ if __name__ == "__main__":
 
     # === Evaluate Sentiment ===
     evaluate(
-        actual=sentiment_test_actual["class-label"], 
         pred=sentiment_test_prediction["sentiment_result"],
-        name="Sentiment Analysis"
+        name="Sentiment"
     )
 
     # === Evaluate Toxicity ===
     evaluate(
-        actual=toxicity_test_actual["label"], 
         pred=toxicity_test_prediction["toxicity_result"],
-        name="Toxicity Analysis"
+        name="Toxicity"
     )

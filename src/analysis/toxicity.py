@@ -12,8 +12,8 @@ toxicity_prompt = PromptTemplate(
 
         Response Format (JSON):
         {{
-        "toxicity_label": "...",
-        "explanation": "..."
+            "toxicity_label": "...",
+            "explanation": "..."
         }}
     """
 )

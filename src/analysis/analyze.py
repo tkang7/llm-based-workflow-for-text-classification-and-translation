@@ -1,20 +1,18 @@
 import pandas as pd
-import numpy as np
-import sys
-import json
-import os
-from tqdm import tqdm
+import ast
 from .chain_analysis import analyze_text
 from ..preprocessing.translate import translate_text
 
 def analyze_and_classify(input_df, output_df, name):
-    for _, row in tqdm(input_df.iterrows(), desc="Analyzing Sentiment Test Dataset"):
+    for index, row in input_df.iterrows():
         # translate if needed
         text = translate_text(row['sentence'])
+        print(f"Index: {index}")
+        print(f"Analyzing... : {text}")
         
         sentiment_result, toxicity_result = analyze_text(text)
-        sentiment_result = json.loads(sentiment_result)
-        toxicity_result = json.loads(toxicity_result)
+        sentiment_result = ast.literal_eval(sentiment_result)
+        toxicity_result = ast.literal_eval(toxicity_result)
 
         new_row = {
             "text": text,
@@ -24,10 +22,10 @@ def analyze_and_classify(input_df, output_df, name):
             "toxicity_explanation": toxicity_result["explanation"]
         }
         output_df = pd.concat([output_df, pd.DataFrame([new_row])], ignore_index=True)
-
-    # export to csv
-
-    export_data_path = "./src/data/output/"
-    output_df.to_csv(export_data_path + name + '.csv', index=False)
+    
+    print("Analysis complete, Exporting to CSV...")
+    export_data_path = "./src/data/output/" + name + ".csv"
+    output_df.to_csv(export_data_path, index=False)
+    print("Export complete!")
 
     return output_df

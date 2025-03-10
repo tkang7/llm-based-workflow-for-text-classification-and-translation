@@ -12,8 +12,8 @@ sentiment_prompt = PromptTemplate(
 
         Response Format (JSON):
         {{
-        "sentiment_label": "...",
-        "explanation": "..."
+            "sentiment_label": "...",
+            "explanation": "..."
         }}
     """
 )

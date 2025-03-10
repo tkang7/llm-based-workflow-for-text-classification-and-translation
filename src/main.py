@@ -1,12 +1,4 @@
-### 1. Translation (as needed)
-### 2. Preprocessing
-### 3. Sentiment Analysis
-### 4. Toxicity
-### 5. Transfer Toxicity (as needed)
-
 import pandas as pd
-import numpy as np
-from tqdm import tqdm
 from src.analysis.analyze import analyze_and_classify
 from src.evaluation.base_evaluation import evaluate
 
@@ -16,8 +8,10 @@ def run_analysis_and_evaluation(input_df, output_df, name_df):
 
     if name_df == "sentiment_test_predictions":
         name = "sentiment"
-    if name_df == "toxicity_test_predictions":
+        result = result["sentiment_result"]
+    elif name_df == "toxicity_test_predictions":
         name = "toxicity"
+        result = result["toxicity_result"]
     else:
         print(f"THIS TYPE OF EVALUATION IS NOT SUPPORTED: {name_df}")
 

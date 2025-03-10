@@ -1,0 +1,5 @@
+Evaluating sentiment
+Accuracy: 0.8600
+Precision: 0.7031
+Recall: 0.6154
+F1 Score: 0.6320
