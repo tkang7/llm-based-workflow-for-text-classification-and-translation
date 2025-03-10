@@ -1,7 +1,6 @@
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 
-# Sentiment Analysis Prompt Template
 sentiment_prompt = PromptTemplate(
     input_variables=["text"],
     template="""
