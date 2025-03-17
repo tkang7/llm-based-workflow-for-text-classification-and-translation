@@ -1,7 +1,7 @@
 import pandas as pd
 import ast
-from .chain_analysis import analyze_text
-from ..preprocessing.translate import translate_text
+from .sentiment_and_toxicity_analysis import analyze_text
+from ..processing.translate import translate_text
 
 def analyze_and_classify(input_df, output_df, name):
     for index, row in input_df.iterrows():
@@ -24,7 +24,7 @@ def analyze_and_classify(input_df, output_df, name):
         output_df = pd.concat([output_df, pd.DataFrame([new_row])], ignore_index=True)
     
     print("Analysis complete, Exporting to CSV...")
-    export_data_path = "./src/data/output/" + name + ".csv"
+    export_data_path = "./src/milestone1/data/output/" + name + ".csv"
     output_df.to_csv(export_data_path, index=False)
     print("Export complete!")
 

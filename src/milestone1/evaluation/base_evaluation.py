@@ -1,7 +1,7 @@
 import pandas as pd
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
 
-actual_data_path = "./src/data/input/"
+actual_data_path = "./src/milestone1/data/input/"
 types_of_data = ["sentiment", "toxicity"]
 
 def evaluate(pred, name):
@@ -35,7 +35,7 @@ def evaluate(pred, name):
     print(f"F1 Score: {f1:.4f}\n")
 
     # Export metrics to a text file
-    with open(f"./src/data/output/{name}_evaluation.txt", "w") as file:
+    with open(f"./src/milestone1/data/output/{name}_evaluation.txt", "w") as file:
         file.write(f"Evaluating {name}\n")
         file.write(f"Accuracy: {accuracy:.4f}\n")
         file.write(f"Precision: {precision:.4f}\n")
@@ -43,7 +43,7 @@ def evaluate(pred, name):
         file.write(f"F1 Score: {f1:.4f}\n")
 
 if __name__ == "__main__":
-    pred_data_path = "./src/data/output/"
+    pred_data_path = "./src/milestone1/data/output/"
     sentiment_test_data_path = pred_data_path + "sentiment_test_predictions.csv"
     toxicity_test_data_path = pred_data_path + "toxicity_test_predictions.csv"
     sentiment_test_prediction = pd.read_csv(sentiment_test_data_path)
