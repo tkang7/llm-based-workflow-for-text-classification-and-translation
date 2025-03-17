@@ -2,6 +2,7 @@
 from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
 from langchain.llms import OpenAI  # Switched from ChatOpenAI
 from langchain_ollama import ChatOllama
+from langchain.chat_models import ChatOpenAI
 import torch
 import os
 
@@ -10,12 +11,14 @@ class LLM:
         self.keys = {
             "small": "TinyLlama/TinyLlama-1.1B-Chat-v1.0",
             "medium": "ibm-granite/granite-3.0-2b-instruct",
+            "large": "mistralai/Mistral-7B-v0.1",
             "gpt-4o-mini-2024-07-18": "gpt-4o-mini-2024-07-18",
             "ollama-qwen:7b": "qwen:7b",
             "ollama-llama3.2": "llama3.2",
-            "gpt-3.5-turbo-instruct": "gpt-3.5-turbo-instruct",  # OpenAI completion model
+            "gpt-3.5-turbo-instruct": "gpt-3.5-turbo-instruct", 
             "gpt-4o": "gpt-4o",
-            "text-davinci-003": "text-davinci-003"  # Another OpenAI completion model
+            "gpt-4": "gpt-4",
+            "text-davinci-003": "text-davinci-003"
         }
 
     def create(self, key="small"):
@@ -24,11 +27,7 @@ class LLM:
             if not api_key:
                 raise ValueError("OpenAI API key required for OpenAI models")
 
-            return OpenAI(
-                model=self.keys[key],
-                temperature=0,
-                openai_api_key=api_key
-            )
+            return ChatOpenAI(model_name="gpt-4", temperature=0)
         
         if key.lower().startswith("ollama"):
             return ChatOllama(

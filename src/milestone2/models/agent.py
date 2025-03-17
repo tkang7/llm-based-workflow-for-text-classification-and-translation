@@ -1,92 +1,101 @@
 from langchain.tools import Tool
 from langchain.agents import initialize_agent
 from langchain.agents import AgentType
-from langchain.llms import OpenAI
+from langchain_community.llms import OpenAI
+from langchain_community.chat_models import ChatOpenAI
 from src.milestone2.models.llm import LLM
 from langchain.agents import AgentExecutor, create_tool_calling_agent
 from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 from langchain.agents import initialize_agent, AgentType
 
 # Tools for the agent
-from src.milestone2.analysis.sentiment_analysis import SentimentAnalysisSubAgent
+from src.milestone2.analysis.sentiment_analysis import SentimentAnalysis
+from src.milestone2.analysis.toxicity_analysis import ToxicityAnalysis
+from src.milestone2.actions.translate import Translator
+from src.milestone2.actions.detoxify import Detoxifier
 
 class Agent:
-    def __init__(self, llm):
-        self.llm = llm
-        self.sentiment_agent = SentimentAnalysisSubAgent()
-        prompt = ChatPromptTemplate.from_messages(
-            [
-                (
-                    "system",
-                    "You are a helpful LLM Agent that selects from a variety of tools to created a structured response. You have access to:"
-                    "\n1. Sentiment Analysis Tool"
-                    "\n2. Toxicity Analysis Tool"
-                    "\n3. Language Translation Tool"
-                    "\n4. Sentence Detoxification Tool"
-
-                    "\n\nUse any number of tools for the given input."
-                ),
-                ("placeholder", "{chat_history}"),
-                ("human", "{input}"),
-                ("placeholder", "{agent_scratchpad}"),
-            ]
-        )
-
+    def __init__(self, llm_name="gpt-4"):
+        self.llm = LLM().create(key=llm_name)
+        
         tools = [
-            Tool(
-                name="Sentiment Analysis Tool",
-                func=self.sentiment_analysis,
-                description="Analyzes the sentiment of a given text and returns the sentiment label.",
-                return_direct=True
+            Tool.from_function(
+                func=self.translate_to_english,
+                name="TranslateToEnglish",
+                description="Use this tool to translate sentences into English."
             ),
+            Tool.from_function(
+                func=self.sentiment_analysis_with_reason,
+                name="SentimentAnalysisWithReason",
+                description="Use this tool to analyze sentiment of a sentence. Returns sentiment label and reasoning."
+            ),
+            Tool.from_function(
+                func=self.toxicity_analysis_with_reason,
+                name="ToxicityAnalysisWithReason",
+                description="Use this tool to analyze toxicity of a sentence. Returns toxicity label and reasoning."
+            ),
+            Tool.from_function(
+                func=self.detoxify_sentence,
+                name="DetoxifySentence",
+                description="Use this tool to detoxify a toxic sentence and rewrite it without harmful language."
+            )
         ]
 
-        # print(tools[0].func("I am happy"))
-
-        self.agent_executor = initialize_agent(
+        self.agent = initialize_agent(
             tools=tools,
-            llm=llm,
-            agent=AgentType.SELF_ASK_WITH_SEARCH,
-            verbose=True,
-            agent_kwargs={
-                "prompt": prompt 
-            },
+            llm=self.llm,
+            # llm=llm,
+            agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+            verbose=True
         )
-    
-    def sentiment_analysis(self, query):
-        # print("sentiment --->")
-        # llm = LLM()
-        # sentiment_llm = llm.create("medium")
-        return self.sentiment_agent.analyze(query, llm=self.llm)
-    
-    def run(self, query):
-        return self.agent_executor.invoke(query)
 
-# class Agent:
-#     def __init__(self, llm):
-#         self.llm = llm
-#         self.sentiment_agent = SentimentAnalysisSubAgent()
-        
-#         # Define tools
-#         self.tools = [
-#             Tool(
-#                 name="Sentiment Analysis",
-#                 func=self.sentiment_analysis,
-#                 description="Useful for analyzing the sentiment of text"
-#             ),
-#         ]
-        
-#         # Initialize agent
-#         print("Initializing agent...")
-#         self.agent = initialize_agent(
-#             self.tools,
-#             self.llm,
-#             verbose=True
-#         )
-#         print("Agent initialized...")
+    def sentiment_analysis_with_reason(self, text: str) -> str:
+        return SentimentAnalysis().analyze(text)
+
+    def toxicity_analysis_with_reason(self, text: str) -> str:
+        return ToxicityAnalysis().analyze(text)
+
+    def translate_to_english(self, text: str) -> str:
+        return Translator().translate(text)
     
-#     def sentiment_analysis(self, query):
-#         return self.sentiment_agent.analyze(self.llm, query)
+    def detoxify_sentence(self, text: str) -> str:
+        return Detoxifier().detoxify(text)
+
+    def run(self, text):
+        query = (
+            f"Here's a sentence: {text}\n"
+            "Please translate it to English if necessary, analyze its sentiment with reasons, "
+            "analyze its toxicity with reasons, and detoxify it.\n"
+            "Return the result strictly as a JSON array in this format:\n\n"
+            "[\n"
+            "    {\n"
+            "        \"sentiment_label\": \"<Sentiment Label>\",\n"
+            "        \"explanation\": \"<Explain why the sentiment was classified as such>\"\n"
+            "    },\n"
+            "    {\n"
+            "        \"toxicity_label\": \"<Toxic/Non-Toxic>\",\n"
+            "        \"explanation\": \"<Explain why the sentence was considered toxic or not>\"\n"
+            "    },\n"
+            "    {\n"
+            "        \"detoxified_text\": \"<Detoxified Sentence>\",\n"
+            "        \"explanation\": \"<Explain how you modified the sentence to make it non-toxic>\"\n"
+            "    }\n"
+            "]"
+        )
+
+        response = self.agent.run(query)
+
+        return response
     
-#     def run(self, query):
-#         return self.agent.run(query)
+if __name__ == "__main__":
+    test_llm = "gpt-4"
+    prod_llm = "mistralai/Mistral-7B-v0.1"
+    agent = Agent(llm_name=test_llm) 
+    
+    
+    input_sentence = "You're so stupid and annoying! I can't stand you."
+
+    response = agent.run(input_sentence)
+
+    print("\nAgent Response:\n")
+    print(response)
