@@ -3,6 +3,7 @@ from langchain.chains import LLMChain
 from langchain.prompts import PromptTemplate
 from langdetect import detect
 from transformers import pipeline
+from langdetect import detect, DetectorFactory, LangDetectException
 
 ### 1. Translation (as needed)
 # Toucan
@@ -253,7 +254,7 @@ class Translator():
 
     def translation_model(self, language):
         model_name = None
-        src_lang = None
+        src_lang = "eng_Latn" 
         tgt_lang = "eng_Latn" 
 
         if language in TOUCAN_LANGS:
@@ -263,13 +264,23 @@ class Translator():
             model_name = "facebook/nllb-200-distilled-600M"
             src_lang = FLORES_LANG_MAP[language]
         else:
-            raise ValueError(f"Language not supported: {language}")
+            print(f"Translation for this language is not supported: {language}")
+            print(f"Language kept at original language...")
+            # raise ValueError(f"Language not supported: {language}")
 
         translator = pipeline("translation", model=model_name)
         return translator, src_lang, tgt_lang
 
     def translate(self, text):
-        detected_lang = detect(text)
+        if not text or text.strip():
+            print("The input text is emtpy or contains only whitespace.")
+            return text
+        try:
+            detected_lang = detect(text)
+        except LangDetectException as e:
+            print(f"Language detection failed: {e}")
+            # Fallback: assume English, or return original text
+            return text
         
         if detected_lang == "en":
             return text 
@@ -279,3 +290,10 @@ class Translator():
         ["translation_text"]
         
         return translated_text
+
+if __name__ == "__main__":
+    text = "እዚህ የድጋፍ መተግበሪያ አስተዋወቆኝ፣ ግን የተደባደቡ ክፍያዎች አልተጠበቁብኝም።" 
+    text = ""
+    translator = Translator()
+    translated_text = translator.translate(text)
+    print(translated_text)

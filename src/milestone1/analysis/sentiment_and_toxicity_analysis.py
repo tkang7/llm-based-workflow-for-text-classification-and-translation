@@ -6,7 +6,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 
 # api_key = os.getenv("OPENAI_API_KEY")
 
-device = torch.device("mps")
+device = torch.device("cuda" if torch.cuda.is_available() else "mps")
 model_name = "ibm-granite/granite-3.0-2b-instruct"
 tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
 model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True, device_map=device)

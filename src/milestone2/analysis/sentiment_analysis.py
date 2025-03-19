@@ -1,12 +1,5 @@
 ### sentiment analysis
-from transformers import pipeline, AutoTokenizer, AutoModelForCausalLM
-import torch
-from langchain.agents import AgentExecutor, create_tool_calling_agent
-from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
 from langchain.chat_models import ChatOpenAI
-
-# Construct the Tools agent
-# agent = create_tool_calling_agent(llm = model, tools = [sentiment_tool], prompt = prompt)
 
 class SentimentAnalysis:
     def __init__(self, llm=None):
@@ -23,14 +16,13 @@ class SentimentAnalysis:
         )
 
         if use_openAI:
-            response = self.llm.predict(prompt)
+            response = self.llm.invoke(prompt)
         else:
             # self.llm is a transformers pipeline
-            outputs = self.llm(prompt, max_length=512, do_sample=True)
+            outputs = self.llm(prompt, max_length=256, do_sample=True)
             
             response = outputs[0]['generated_text']
             
-            # If the prompt is repeated in the response, trim it:
             if "Answer:" in response:
                 response = response.split("Answer:")[-1].strip()
             

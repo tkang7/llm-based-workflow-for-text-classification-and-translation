@@ -1,0 +1,5 @@
+Evaluating milestone_2_detox_data
+Accuracy: 0.5600
+Precision: 0.2527
+Recall: 0.3139
+F1 Score: 0.2541

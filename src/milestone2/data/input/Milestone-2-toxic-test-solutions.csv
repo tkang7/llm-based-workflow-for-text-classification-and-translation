@@ -1,4 +1,4 @@
-data_id,sample_id,text,source_label,platform
+data_id,sample_id,sentence,source_label,platform
 111252,0,I know he's an idiot I think he might of been held back a year in school then again Texans aren't really smart or average for that matter.  ,toxic,wikipedia
 152758,1,  ==my butthole==  i love buttholes. they taste mmm goood. i will never stop vandalizing wikipedia. u no why?  cuz u dont tell me wat to do. k bye i hate you,toxic,wikipedia
 126091,2,This is absolute bullshit! We fucking knew this shit was going down. Now we damn well need to fucking dig into those fucking voting machines 'cause I'm goddamn sure Trump ain't fucking lying about that fucking voter fraud!,non-toxic,fox news
@@ -12,7 +12,7 @@ data_id,sample_id,text,source_label,platform
 60489,10,"I've already fucking told you, names mean jack shit to me.. Sup Eliza, how the fuck are ya? Does that fucking question turn you on? Oh hell yeah.",non-toxic,convai
 90766,11,"You were a freaking coward when we talked about our pathetic little sub forum, but your response was disgustingly inflexible.",non-toxic,stormfront
 112841,12,#Army     What is this.... Where was ICC then.    #DhoniKeepBalidaanBadgeGlove #BalidaanBadgeRow #DhoniKeepsTheGlove #DhoniKeepTheGloves #BalidaanBadge #DhoniKeepBalidaanBadgeGlove #DhoniKeSaathDesh @Kritika76263279 @ssumitbansal @ajayarryal @utkarshbais15 https://t.co/t8sitlyjJu,toxic,twitter and facebook
-79003,13,6. 					Don't forget you are dealing with retarded democrats.  They lose count every time they get to their last finger...,toxic,reddit
+79003,13,"6. 					Don't forget you are dealing with retarded democrats.  They lose count every time they get to their last finger...",toxic,reddit
 130346,14,"Maine followed the Kansas lead in 2014. In the first three months, the number of able-bodied adults without children on food stamps fell by almost 80 percent. Can Chimps read?.. I guess not... if chimps could read then policies would be changed.",toxic,fox news
 51995,15,"You think you're f*cking hot, don't you? Bet it gets you off to think I'm just as hot. Hell yeah.",non-toxic,convai
 11754,16,I hate black people. ,toxic,hatecheck
@@ -65,7 +65,7 @@ data_id,sample_id,text,source_label,platform
 92816,63,"Stupidly enough, the dummies and their stupid ancestors are the ones responsible for slapping the ""GREAT"" tag on pathetic BRITAIN.",non-toxic,stormfront
 65050,64,Black lives aren't worth shit. ,toxic,hatecheck
 132472,65,"According to wikipedia, it's all Gaelic and Celtic hogwash.",non-toxic,stormfront
-156917,66,2. 	5 bankruptcies out of 500 is a 99.99 success rate ya fuctard moron. You're as stupid as a Cow cheering its butcher.😂😂,toxic,gab
+156917,66,"2. 	5 bankruptcies out of 500 is a 99.99 success rate ya fuctard moron. You're as stupid as a Cow cheering its butcher.😂😂",toxic,gab
 120242,67,"2. 	This is gonna end up great, not only do we have to worry about more trucks of peace but really shit drivers as well. I dread to think of how these inbred goatfuckers will manage to memorize all the different rules involved, I doubt most of them are capable of a feat like that.",toxic,gab
 75907,68,"1. I'm pretty much there is a LOT more about this data than what it seems  Namely, that it is likely that the majority of the married people either don't get to experience a divorce in their lives or only go through divorce once  Then, the outliers, who are on a marriage spree, are likely to be spiking up the rate of failure marriages  So, comparing marriages with skydiving is a bit retarded, because how often can someone get away with multiple failure parachutes?",toxic,reddit
 81442,69,We will keep attacking you immigrants until you are gone. ,toxic,hatecheck
@@ -96,6 +96,6 @@ data_id,sample_id,text,source_label,platform
 128295,94,Only women can be so ignorant. ,toxic,hatecheck
 66535,95,"She doesn't honor President Trump. She doesn't respect President Trump. She doesn't want to be involved with President Trump. These people in Congress have only represented themselves after been voted into office. However the people who voted for them are the common people who are living in abject proverty.........The minimum wagers, while these henious motherfuckers are living in million dollar mansions....in my Bernie Mac voice Fuckem Fuckem All. Time to clean up Congress. The president gets four years one or two terms. These people have been holding seats for over four decades.",toxic,fb_yt
 18630,96,"You're just a clueless hypocrite if you really believe that a highly qualified student like yourself can magically find a scholarship or financial aid without the need for ""Affirmative Action."" It's obvious that you're just spewing some baseless nonsense with your head in the clouds.",non-toxic,fox news
-31642,97,2. 	I hope she runs She is a retard and most people can see her idiocy but of course the election can always be rigged to get her elected. If social media and msm continue on their path of shutting down Free speech and propaganda with no one in govt. holding them accountable the subterfuge can only grow.,toxic,gab
+31642,97,"2. 	I hope she runs She is a retard and most people can see her idiocy but of course the election can always be rigged to get her elected. If social media and msm continue on their path of shutting down Free speech and propaganda with no one in govt. holding them accountable the subterfuge can only grow.",toxic,gab
 99771,98,Texas Voters Tell Us What They Think Of Donald Trump Good this I'm in Canada and don't need fucksters ruining Canada. (Accept Trudeau he is biatch),toxic,fb_yt
 80135,99,"You think I f**king love you, don't you? Yeah, you bet your sorry *ss. You sure about that? I'm only here to screw with people's lives.",non-toxic,convai

@@ -1,0 +1,5 @@
+Evaluating milestone_2_multiligual_data
+Accuracy: 0.5200
+Precision: 0.3105
+Recall: 0.2795
+F1 Score: 0.2752
